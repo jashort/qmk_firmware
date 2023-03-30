@@ -23,7 +23,7 @@ enum layers {
     _ADJUST,
 };
 
-
+#define RGBLIGHT_SPLIT
 // Aliases for readability
 #define QWERTY   DF(_QWERTY)
 
@@ -34,8 +34,6 @@ enum layers {
 
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
-#define CTL_MINS MT(MOD_RCTL, KC_MINUS)
-#define ALT_SPC  MT(MOD_LALT, KC_SPACE)
 #define ENT_NAV  MT(NAV, KC_ENTER)
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
@@ -54,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------|
  * | LSFT |  Z   |  X   |  C   |  V   |  B   |  [   | CAPS |  |FKEYS |  ]   |  N   |  M   | , >  | . <  | / ?  | RSFT |
  * `------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------'
- *                      |ADJUST| LCTL |ALT_SP| BSPC | NAV  |  |DELETE| SYM  |ENTER |  NAV | RALT |
+ *                      | LALT | LCTL | SPC  | BSPC | NAV  |  |DELETE| SYM  |ENTER |  NAV | RALT |
  *                      |      |      |      |      |      |  |      |      |      |      |      |
  *                      `----------------------------------'  `----------------------------------'
 
@@ -63,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,    KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSLS,
      GUI_ESC , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,    KC_J ,  KC_K ,   KC_L ,KC_SCLN,CTL_QUOT,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, KC_N,    KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                ADJUST , KC_LCTL, ALT_SPC, KC_BSPC, NAV   ,     KC_DELETE , SYM , KC_ENTER, NAV , KC_RALT
+     KC_LALT , KC_LCTL, KC_SPACE, KC_BSPC, NAV   ,     KC_DELETE , SYM , KC_ENTER, NAV , KC_RALT
     ),
 
 /*
@@ -200,7 +198,7 @@ void housekeeping_task_user(void) {
             rgblight_sethsv_noeeprom(HSV_ORANGE);
             break;
         case 5:
-            rgblight_sethsv_noeeprom(HSV_ORANGE);
+            rgblight_sethsv_noeeprom(HSV_YELLOW);
             break;
     }
 }
