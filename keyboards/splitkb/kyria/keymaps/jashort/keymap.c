@@ -23,7 +23,7 @@ enum layers {
     _ADJUST,
 };
 
-#define RGBLIGHT_SPLIT
+
 // Aliases for readability
 #define QWERTY   DF(_QWERTY)
 
