@@ -54,25 +54,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------|
  * | LSFT |  Z   |  X   |  C   |  V   |  B   |  [   | CAPS |  |FKEYS |  ]   |  N   |  M   | , >  | . <  | / ?  | RSFT |
  * `------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------'
- *                      |ADJUST| LCTL |ALT_SP| BSPC | NAV  |  |DELETE| NAV  |ENTER | SYM  | RALT |
+ *                      |ADJUST| LCTL |ALT_SP| BSPC | NAV  |  |DELETE| SYM  |ENTER |  NAV | RALT |
  *                      |      |      |      |      |      |  |      |      |      |      |      |
  *                      `----------------------------------'  `----------------------------------'
 
  */
     [_QWERTY] = LAYOUT(
-     KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSLS,
-     GUI_ESC , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,   KC_J ,  KC_K ,   KC_L ,KC_SCLN,CTL_QUOT,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, KC_N,   KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                ADJUST , KC_LCTL, ALT_SPC, KC_BSPC, NAV   ,     KC_DELETE , NAV , KC_ENTER, SYM , KC_RALT
+     KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,    KC_U ,  KC_I ,   KC_O ,  KC_P , KC_BSLS,
+     GUI_ESC , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,    KC_J ,  KC_K ,   KC_L ,KC_SCLN,CTL_QUOT,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,KC_CAPS,     FKEYS  , KC_RBRC, KC_N,    KC_M ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
+                                ADJUST , KC_LCTL, ALT_SPC, KC_BSPC, NAV   ,     KC_DELETE , SYM , KC_ENTER, NAV , KC_RALT
     ),
 
 /*
  * Nav Layer: Media, navigation
  *
  * ,-----------------------------------------.                              ,-----------------------------------------.
- * |      |      |      |      |      |      |                              | PGUP | HOME |  UP  | END  | VOLU | DEL  |
+ * |      |      |      |      |      |      |                              | PGUP | HOME |  UP  | END  | VOLU |  = + |
  * |------+------+------+------+------+------|                              |------+------+------+------+------+------|
- * |      | LGUI | LALT | LCTL | LSFT |      |                              | PGDN | LEFT | DOWN | RGHT | VOLD | INS  |
+ * |      | LGUI | LALT | LCTL | LSFT |      |                              | PGDN | LEFT | DOWN | RGHT | VOLD |  +   |
  * |------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |      |      | SCRL |  |      |      |PAUSE | MPRV | MPLY | MNXT | MUTE | PSCR |
  * `------+------+------+------+------+------+------+------.  ,------+------+------+------+------+------+------+------'
@@ -82,8 +82,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, KC_DEL,
-      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_INS,
+      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_VOLU, KC_EQL,
+      _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_PLUS,
       _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -176,9 +176,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef RGBLIGHT_ENABLE
 void keyboard_post_init_user(void) {
-  rgblight_enable_noeeprom(); // Enables RGB, without saving settings
-  rgblight_sethsv_noeeprom(HSV_PURPLE);
-  rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
 }
 
 void housekeeping_task_user(void) {
@@ -195,6 +195,12 @@ void housekeeping_task_user(void) {
             break;
         case 3:
             rgblight_sethsv_noeeprom(HSV_BLUE);
+            break;
+        case 4:
+            rgblight_sethsv_noeeprom(HSV_ORANGE);
+            break;
+        case 5:
+            rgblight_sethsv_noeeprom(HSV_ORANGE);
             break;
     }
 }
