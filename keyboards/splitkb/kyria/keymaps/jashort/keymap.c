@@ -32,8 +32,8 @@ enum layers {
 #define FKEYS    OSL(_FUNC)
 #define MSE_QUOT LT(_MSE, KC_QUOTE)
 #define ADJUST   MO(_ADJUST)
-#define WRD_L    LCTL(KC_LEFT)
-#define WRD_R    LCTL(KC_RIGHT)
+#define WRD_L    LOPT(KC_LEFT)
+#define WRD_R    LOPT(KC_RIGHT)
 
 #define GUI_ESC  MT(MOD_LGUI, KC_ESC)
 //#define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
