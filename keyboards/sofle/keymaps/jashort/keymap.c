@@ -5,7 +5,6 @@ enum sofle_layers {
     _QWERTY,
     _LOWER,
     _RAISE,
-    _ADJUST,
 };
 
 enum custom_keycodes {
@@ -85,28 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX, KC_CAPS,                       KC_MINS,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_BSPC,
   _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_MINS, _______,       _______,  KC_UNDS,  KC_EQL, KC_LSTRT, KC_LEND,   XXXXXXX, _______,
                     _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
-),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | QK_BOOT|      |QWERTY|    |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |MACWIN|      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LCtl | LOpt | LCmd | SPACE | / BKSP /       \LOWER \  |ENTER |RAISE | RAlt | RGUI |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-  [_ADJUST] = LAYOUT(
-  XXXXXXX , XXXXXXX,  XXXXXXX ,  XXXXXXX , XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  QK_BOOT  , XXXXXXX,KC_QWERTY, XXXXXXX ,CG_TOGG,XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX,CG_TOGG, XXXXXXX,    XXXXXXX,  XXXXXXX,                     XXXXXXX, KC_VOLD, KC_MUTE, KC_VOLU, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX,
-                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-  )
+)
 };
 
 #ifdef OLED_ENABLE
@@ -152,9 +130,6 @@ static void print_status_narrow(void) {
         case _LOWER:
             oled_write_P(PSTR("Lower"), false);
             break;
-        case _ADJUST:
-            oled_write_P(PSTR("Adj\n"), false);
-            break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
     }
@@ -180,10 +155,6 @@ bool oled_task_user(void) {
 }
 
 #endif
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
