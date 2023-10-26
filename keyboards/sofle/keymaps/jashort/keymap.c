@@ -47,45 +47,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | F12  |
+ * |  `   |   !  |   @  |   #  |   $  |   %  |                    |   ^  |   &  |   *  |   (  |   )  |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Esc  |   !  |   @  |   #  |   $  |   %  |-------.    ,-------|   ^  |   &  |   *  |   (  |   )  |   |  |
+ * | Esc  |   1  |   2  |   3  |   4  |   5  |-------.    ,-------|   6  |   7  |   8  |   9  |   0  |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * | Shift|   [  |  ]   |   {  |  }   | - _  |-------|    |-------|   _  | = +  |   +  |   :  |   \  |  Del |
+ * | Shift|   [  |  ]   |   {  |  }   | - _  |-------|    |-------|   _  | = +  |   +  |      |      |  Del |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LCtl | LOpt | LCmd | SPACE | / BKSP /       \SHIFT \  |ENTER |RAISE | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |LOWER |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_LOWER] = LAYOUT(
-  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                       KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
-  KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,  KC_F12,
-  _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_PIPE,
-  _______,  KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_MINS, _______,       _______, KC_UNDS, KC_EQL, KC_PLUS, KC_COLN, KC_BSLS, _______,
-                       _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+         KC_GRV, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,                       KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,  KC_F12,
+        _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,
+        _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_MINS, _______,     _______, KC_UNDS,  KC_EQL, KC_PLUS, XXXXXXX, XXXXXXX, _______,
+                       _______, _______, _______, _______, _______,               _______, _______, _______, _______, _______
 ),
 /* RAISE
  * ,----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    | PG_UP|      |      |      |      |      |
+ * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  | Ins  | Pscr | Menu |      |      |                    | PG_DN| PWrd |  Up  | NWrd | DLine| Bspc |
+ * |   `  |  F1  |  F2  |  F3  |  F4  |      |                    | PG_UP| PWrd |  Up  | NWrd | Home |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Esc  | LAt  | LCtl |LShift|      | Caps |-------.    ,-------| - _  | Left | Down | Rigth|  Del | Bspc |
+ * | Esc  |  F5  |  F6  |  F7  |  F8  | Caps |-------.    ,-------| PG_DN| Left | Down | Rigth| LEnd |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * | Shift|   [  |  ]   |   {  |  }   | - _  |-------|    |-------|   _  | = +  |   +  | LStr | LEnd | Del  |
+ * | Shift|  F9  | F10  | F11  | F12  | - _  |-------|    |-------|   _  | WRK1 | WRK2 | WRK3 |      | Del  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LCtl | LOpt | LCmd | SPACE | / BKSP /       \SHIFT \  |ENTER |RAISE | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |LOWER |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_RAISE] = LAYOUT(
-  _______, _______ , _______ , _______ , _______ , _______,                      KC_PGUP ,  _______  , _______,  _______ ,  _______ ,_______,
-  _______,  KC_INS,  KC_PSCR,   KC_APP,  XXXXXXX, XXXXXXX,                       KC_PGDN , WRD_L,   KC_UP, WRD_R ,KC_DLINE, KC_BSPC,
-  _______, KC_LALT,  KC_LCTL,  KC_LSFT,  XXXXXXX, KC_CAPS,                       KC_MINS,  KC_LEFT, KC_DOWN, KC_RGHT,  KC_DEL, KC_BSPC,
-  _______, KC_LBRC, KC_RBRC, KC_LCBR, KC_RCBR, KC_MINS, _______,       _______,  KC_UNDS,  KC_EQL, KC_PLUS, KC_LSTRT, KC_LEND, _______,
-                    _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______
+  XXXXXXX, XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+   KC_GRV,  KC_F1  ,  KC_F2  ,  KC_F3  ,  KC_F4  , XXXXXXX,                      KC_PGUP,   WRD_L,   KC_UP,  WRD_R , KC_HOME, XXXXXXX,
+  _______,  KC_F5  ,  KC_F6  ,  KC_F7  ,  KC_F8  , KC_CAPS,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_LEND, XXXXXXX,
+  _______,  KC_F9  ,  KC_F10 ,  KC_F11 ,  KC_F12 , KC_MINS, _______,    _______,  KC_UNDS, SGUI(1), SGUI(2), SGUI(3), _______, _______,
+                      _______,  _______,  _______, _______, _______,    _______,  _______, _______, _______, _______
 )
 };
 
