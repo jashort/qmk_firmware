@@ -18,7 +18,11 @@ enum custom_keycodes {
     WRD_R = LOPT(KC_RIGHT),
     ENT_LOW = LT(_LOWER, KC_ENTER),
     LOWER = MO(_LOWER),
-    RAISE = MO(_RAISE)
+    RAISE = MO(_RAISE),
+    WRK1 = LCTL(KC_1),
+    WRK2 = LCTL(KC_2),
+    WRK3 = LCTL(KC_3),
+    SSHOT = SGUI(KC_4)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -74,18 +78,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | Esc  |  F5  |  F6  |  F7  |  F8  | Caps |-------.    ,-------| PG_DN| Left | Down | Rigth| LEnd |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * | Shift|  F9  | F10  | F11  | F12  | - _  |-------|    |-------|   _  | WRK1 | WRK2 | WRK3 |      | Del  |
+ * | Shift|  F9  | F10  | F11  | F12  | - _  |-------|    |-------|   _  | WRK1 | WRK2 | WRK3 |SSHOT | Del  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | LCtl | LOpt | LCmd | SPACE | / BKSP /       \SHIFT \  |ENTER |RAISE | RAlt | RGUI |
  *            |      |      |      |      |/       /         \      \ |LOWER |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_RAISE] = LAYOUT(
-  XXXXXXX, XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-   KC_GRV,  KC_F1  ,  KC_F2  ,  KC_F3  ,  KC_F4  , XXXXXXX,                      KC_PGUP,   WRD_L,   KC_UP,  WRD_R , KC_HOME, XXXXXXX,
-  _______,  KC_F5  ,  KC_F6  ,  KC_F7  ,  KC_F8  , KC_CAPS,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_LEND, XXXXXXX,
-  _______,  KC_F9  ,  KC_F10 ,  KC_F11 ,  KC_F12 , KC_MINS, _______,    _______,  KC_UNDS, SGUI(1), SGUI(2), SGUI(3), _______, _______,
-                      _______,  _______,  _______, _______, _______,    _______,  _______, _______, _______, _______
+        XXXXXXX, XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        KC_TILD,  KC_F1  ,  KC_F2  ,  KC_F3  ,  KC_F4  , XXXXXXX,                      KC_PGUP,   WRD_L,   KC_UP,  WRD_R , KC_HOME, XXXXXXX,
+        _______,  KC_F5  ,  KC_F6  ,  KC_F7  ,  KC_F8  , KC_CAPS,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_LEND, XXXXXXX,
+        _______,  KC_F9  ,  KC_F10 ,  KC_F11 ,  KC_F12 , KC_MINS, _______,    _______,  KC_UNDS,   WRK1,    WRK2,    WRK3,    SSHOT, _______,
+                            _______,  _______,  _______, _______, _______,    _______,  _______, _______, _______, _______
 )
 };
 
