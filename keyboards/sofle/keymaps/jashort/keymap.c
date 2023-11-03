@@ -22,7 +22,7 @@ enum custom_keycodes {
     WRK1 = LCTL(KC_1),
     WRK2 = LCTL(KC_2),
     WRK3 = LCTL(KC_3),
-    SSHOT = SGUI(KC_4)
+    SSHOT = LCTL(SGUI(KC_4))
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
