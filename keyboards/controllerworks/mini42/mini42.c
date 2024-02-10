@@ -45,13 +45,13 @@ bool render_status(void) {
             oled_write_P(PSTR("BASE\n"), false);
             break;
         case 1:
-            oled_write_P(PSTR("LOWER\n"), false);
+            oled_write_P(PSTR("SYMBOL\n"), false);
             break;
         case 2:
-            oled_write_P(PSTR("RAISE\n"), false);
+            oled_write_P(PSTR("NAV\n"), false);
             break;
         case 3:
-            oled_write_P(PSTR("ADJUST\n"), false);
+            oled_write_P(PSTR("SETTINGS\n"), false);
             break;            
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
@@ -75,7 +75,7 @@ bool oled_task_kb(void) {
         render_status();  // Renders the current keyboard state (layer, lock, caps, scroll, etc)
     } else {
         render_logo();  // Renders a static logo
-        oled_scroll_left();  // Turns on scrolling
+//        oled_scroll_left();  // Turns on scrolling
     }
     return false;
 }
