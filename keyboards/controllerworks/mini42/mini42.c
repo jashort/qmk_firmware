@@ -30,7 +30,9 @@ static void render_logo(void) {
 }
 
 oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
-    if (!is_keyboard_master()) {
+    if (is_keyboard_master()) {
+        return OLED_ROTATION_90;
+    } else {
         return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
     }
 
@@ -39,21 +41,24 @@ oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
 
 bool render_status(void) {
     // Host Keyboard Layer Status
-    oled_write_P(PSTR("Layer: "), false);
+    oled_write_P(PSTR("Layer \n"), false);
 
     switch (get_highest_layer(layer_state)) {
         case 0:
             oled_write_P(PSTR("BASE\n"), false);
             break;
         case 1:
-            oled_write_P(PSTR("SYMBOL\n"), false);
+            oled_write_P(PSTR("SYM\n"), false);
             break;
         case 2:
             oled_write_P(PSTR("NAV\n"), false);
             break;
         case 3:
-            oled_write_P(PSTR("SETTINGS\n"), false);
-            break;            
+            oled_write_P(PSTR("CFG\n"), false);
+            break;
+        case 4:
+            oled_write_P(PSTR("NUMPD\n"), false);
+            break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
             oled_write_ln_P(PSTR("Undefined"), false);
