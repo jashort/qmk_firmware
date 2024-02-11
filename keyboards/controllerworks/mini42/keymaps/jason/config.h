@@ -15,6 +15,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#define PERMISSIVE_HOLD
+
 #pragma once
 #ifdef RGB_MATRIX_ENABLE
 //#    define SPLIT_TRANSPORT_MIRROR
