@@ -57,7 +57,7 @@ bool render_status(void) {
             oled_write_P(PSTR("CFG\n"), false);
             break;
         case 4:
-            oled_write_P(PSTR("NUMPD\n"), false);
+            oled_write_P(PSTR("NumPD\n"), false);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
@@ -66,10 +66,10 @@ bool render_status(void) {
 
     // Host Keyboard LED Status
     led_t led_state = host_keyboard_led_state();
-    oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
-    oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-    oled_write_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    
+    oled_write_P(led_state.num_lock ? PSTR("NUM\n") : PSTR("\n"), false);
+    oled_write_P(led_state.caps_lock ? PSTR("CAP\n") : PSTR("\n"), false);
+    oled_write_P(led_state.scroll_lock ? PSTR("SCR\n") : PSTR("\n"), false);
+    oled_write_P(is_caps_word_on() ? PSTR("CAPSW\n") : PSTR("\n"), false);
     return false;
 }
 
