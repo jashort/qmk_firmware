@@ -16,6 +16,7 @@
 */
 
 #define PERMISSIVE_HOLD
+#define CAPS_WORD_INVERT_ON_SHIFT
 
 #pragma once
 #ifdef RGB_MATRIX_ENABLE
